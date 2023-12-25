@@ -4,7 +4,7 @@
     using Model;
 
     /// <summary>
-    /// ads.
+    /// Класс для построения расчески.
     /// </summary>
     public class HairbrushBuilder
     {
@@ -74,14 +74,14 @@
         }
 
         /// <summary>
-        /// Строит внешнюю и верхнюю на основе заданных параметров.
+        /// Строит внешнюю и верхнюю часть расчески на основе заданных параметров.
         /// </summary>
         /// <param name="document2d">Объект 2д документа.</param>
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfTeeth">Длина зубца расчески.</param>
         /// <param name="widthOfTeeth">Ширина зубца расчески.</param>
         /// <param name="lengthOfBase">Длина основания расчески.</param>
-        public void BuildBody(
+        private void BuildBody(
                 ksDocument2D document2d,
                 double xPosition,
                 double lengthOfTeeth,
@@ -128,7 +128,7 @@
         /// <param name="distanceBetweenTeeth">Расстояние между зубцами расчески.</param>
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfBase">Длина основания расчески.</param>
-        public void BuildTeeths(
+        private void BuildTeeths(
             ksDocument2D document2d,
             int numberOfTeeth,
             double lengthOfTeeth,
@@ -187,7 +187,7 @@
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfTeeth">Длина зубца расчески.</param>
         /// <param name="widthOfTeeth">Ширина зубца расчески.</param>
-        public void BuildHandle(
+        private void BuildHandle(
             ksDocument2D document2d,
             double handleLength,
             double xPosition,

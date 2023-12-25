@@ -158,8 +158,8 @@
             WidthOfTeethTextBox.Name = "WidthOfTeethTextBox";
             WidthOfTeethTextBox.Size = new Size(175, 23);
             WidthOfTeethTextBox.TabIndex = 21;
-            WidthOfTeethTextBox.TextChanged += WidthOfTeethTextBox_TextChanged;
-            WidthOfTeethTextBox.MouseEnter += WidthOfTeethTextBox_MouseEnter;
+            WidthOfTeethTextBox.TextChanged += ProcessingTextChanges;
+            WidthOfTeethTextBox.MouseEnter += ProcessingMouseEnters;
             // 
             // ButtonsTableLayoutPanel
             // 
@@ -217,8 +217,8 @@
             DistanceBetweenTeethTextBox.Name = "DistanceBetweenTeethTextBox";
             DistanceBetweenTeethTextBox.Size = new Size(175, 23);
             DistanceBetweenTeethTextBox.TabIndex = 20;
-            DistanceBetweenTeethTextBox.TextChanged += DistanceBetweenTeethTextBox_TextChanged;
-            DistanceBetweenTeethTextBox.MouseEnter += DistanceBetweenTeethTextBox_MouseEnter;
+            DistanceBetweenTeethTextBox.TextChanged += ProcessingTextChanges;
+            DistanceBetweenTeethTextBox.MouseEnter += ProcessingMouseEnters;
             // 
             // LengthOfTeethTextBox
             // 
@@ -226,8 +226,8 @@
             LengthOfTeethTextBox.Name = "LengthOfTeethTextBox";
             LengthOfTeethTextBox.Size = new Size(175, 23);
             LengthOfTeethTextBox.TabIndex = 19;
-            LengthOfTeethTextBox.TextChanged += LengthOfTeethTextBox_TextChanged;
-            LengthOfTeethTextBox.MouseEnter += LengthOfTeethTextBox_MouseEnter;
+            LengthOfTeethTextBox.TextChanged += ProcessingTextChanges;
+            LengthOfTeethTextBox.MouseEnter += ProcessingMouseEnters;
             // 
             // FullNameLabel
             // 
@@ -246,8 +246,8 @@
             NumberOfTeethTextBox.Name = "NumberOfTeethTextBox";
             NumberOfTeethTextBox.Size = new Size(174, 23);
             NumberOfTeethTextBox.TabIndex = 18;
-            NumberOfTeethTextBox.TextChanged += NumberOfTeethTextBox_TextChanged;
-            NumberOfTeethTextBox.MouseEnter += NumberOfTeethTextBox_MouseEnter;
+            NumberOfTeethTextBox.TextChanged += ProcessingTextChanges;
+            NumberOfTeethTextBox.MouseEnter += ProcessingMouseEnters;
             // 
             // EmailLabel
             // 
@@ -266,8 +266,8 @@
             HandleLengthTextBox.Name = "HandleLengthTextBox";
             HandleLengthTextBox.Size = new Size(174, 23);
             HandleLengthTextBox.TabIndex = 17;
-            HandleLengthTextBox.TextChanged += HandleLengthTextBox_TextChanged;
-            HandleLengthTextBox.MouseEnter += HandleLengthTextBox_MouseEnter;
+            HandleLengthTextBox.TextChanged += ProcessingTextChanges;
+            HandleLengthTextBox.MouseEnter += ProcessingMouseEnters;
             // 
             // PhoneNumberLabel
             // 
@@ -327,7 +327,7 @@
             // HairbrushPictureBox
             // 
             HairbrushPictureBox.Dock = DockStyle.Fill;
-            HairbrushPictureBox.Image = (Image)resources.GetObject("HairbrushPictureBox.Image");
+            HairbrushPictureBox.Image = View.Properties.Resources.Hairbrush;
             HairbrushPictureBox.InitialImage = (Image)resources.GetObject("HairbrushPictureBox.InitialImage");
             HairbrushPictureBox.Location = new Point(0, 0);
             HairbrushPictureBox.Name = "HairbrushPictureBox";

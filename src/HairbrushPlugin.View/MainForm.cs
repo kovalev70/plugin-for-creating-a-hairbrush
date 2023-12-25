@@ -38,12 +38,12 @@ namespace HairbrushPlugin
         /// <summary>
         /// Параметры для расчёта характеристик расчёски.
         /// </summary>
-        private readonly HairbrushParameters _parameters = new HairbrushParameters();
+        private readonly HairbrushParameters _parameters = new();
 
         /// <summary>
         /// Объект для построения расчёски.
         /// </summary>
-        private readonly HairbrushBuilder _hairbrushBuilder = new HairbrushBuilder();
+        private readonly HairbrushBuilder _hairbrushBuilder = new();
 
         /// <summary>
         /// Конструктор класса MainForm.
@@ -75,38 +75,52 @@ namespace HairbrushPlugin
         /// <summary>
         /// Обработка изменений текста.
         /// </summary>
-        /// <param name="parameterType">Тип параметра.</param>
-        /// <param name="textBox">Текстовое поле.</param>
-        private void ProcessingTextChanges(ParameterType parameterType, TextBox textBox)
+        private void ProcessingTextChanges(object sender, EventArgs e)
         {
-            try
+            if (sender is TextBox textBox)
             {
-                _parameters.Parameters[parameterType].Value = double.Parse(textBox.Text);
-                _errors[parameterType] = "";
-                textBox.BackColor = _correctBackColor;
-            }
-            catch (ArgumentException exception)
-            {
-                textBox.BackColor = _incorrectBackColor;
-                _errors[parameterType] = exception.Message;
-            }
-            catch
-            {
-                textBox.BackColor = _incorrectBackColor;
-                _errors[parameterType] = "Некорректный формат данных.";
+                var parameterTypeStr = textBox.Name[..^"TextBox".Length];
+
+                if (Enum.TryParse(typeof(ParameterType), parameterTypeStr, out object result))
+                {
+                    var parameterType = (ParameterType)result;
+                    try
+                    {
+                        _parameters.Parameters[parameterType].Value = double.Parse(textBox.Text);
+                        _errors[parameterType] = "";
+                        textBox.BackColor = _correctBackColor;
+                    }
+                    catch (ArgumentException exception)
+                    {
+                        textBox.BackColor = _incorrectBackColor;
+                        _errors[parameterType] = exception.Message;
+                    }
+                    catch
+                    {
+                        textBox.BackColor = _incorrectBackColor;
+                        _errors[parameterType] = "Некорректный формат данных.";
+                    }
+                }
             }
         }
 
         /// <summary>
         /// Обработка события наведения мыши.
         /// </summary>
-        /// <param name="parameterType">Тип параметра.</param>
-        /// <param name="textBox">Текстовое поле.</param>
-        private void ProcessingMouseEnters(ParameterType parameterType, TextBox textBox)
+        private void ProcessingMouseEnters(object sender, EventArgs e)
         {
-            if (_errors[parameterType] != "")
+            if (sender is TextBox textBox)
             {
-                commonToolTip.SetToolTip(textBox, _errors[parameterType]);
+                var parameterTypeStr = textBox.Name[..^"TextBox".Length];
+
+                if (Enum.TryParse(typeof(ParameterType), parameterTypeStr, out object result))
+                {
+                    var parameterType = (ParameterType)result;
+                    if (_errors[parameterType] != "")
+                    {
+                        commonToolTip.SetToolTip(textBox, _errors[parameterType]);
+                    }
+                }
             }
         }
 
@@ -144,96 +158,6 @@ namespace HairbrushPlugin
             {
                 _hairbrushBuilder.BuildHairbrush(_parameters);
             }
-        }
-
-        /// <summary>
-        /// Обработчик изменения текста в поле для ввода длины ручки.
-        /// Вызывает метод обработки изменений текста.
-        /// </summary>
-        private void HandleLengthTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ProcessingTextChanges(ParameterType.HandleLength, HandleLengthTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик изменения текста в поле для ввода количества зубьев.
-        /// Вызывает метод обработки изменений текста.
-        /// </summary>
-        private void NumberOfTeethTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ProcessingTextChanges(ParameterType.NumberOfTeeth, NumberOfTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик изменения текста в поле для ввода длины зубьев.
-        /// Вызывает метод обработки изменений текста.
-        /// </summary>
-        private void LengthOfTeethTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ProcessingTextChanges(ParameterType.LengthOfTeeth, LengthOfTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик изменения текста в поле для ввода расстояния между зубьями.
-        /// Вызывает метод обработки изменений текста.
-        /// </summary>
-        private void DistanceBetweenTeethTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ProcessingTextChanges(ParameterType.DistanceBetweenTeeth, DistanceBetweenTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик изменения текста в поле для ввода ширины зубьев.
-        /// Вызывает метод обработки изменений текста.
-        /// </summary>
-        private void WidthOfTeethTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ProcessingTextChanges(ParameterType.WidthOfTeeth, WidthOfTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик события наведения мыши в текстовое поле с количеством зубцов.
-        /// Вызывает метод обработки события "мышь входит".
-        /// </summary>
-        private void NumberOfTeethTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            ProcessingMouseEnters(ParameterType.NumberOfTeeth, NumberOfTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик события наведения мыши в текстовое поле с длиной ручки.
-        /// Вызывает метод обработки события "мышь входит".
-        /// </summary>
-        private void HandleLengthTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            ProcessingMouseEnters(ParameterType.HandleLength, HandleLengthTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик события наведения мыши в текстовое поле с длиной зубьев.
-        /// Вызывает метод обработки события "мышь входит".
-        /// </summary>
-        private void LengthOfTeethTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            ProcessingMouseEnters(ParameterType.LengthOfTeeth, LengthOfTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик события наведения мыши в текстовое поле с расстоянием между зубьями.
-        /// Вызывает метод обработки события "мышь входит".
-        /// </summary>
-        private void DistanceBetweenTeethTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            ProcessingMouseEnters(ParameterType.DistanceBetweenTeeth, DistanceBetweenTeethTextBox);
-        }
-
-        /// <summary>
-        /// Обработчик события наведения мыши в текстовое поле с шириной зубьев.
-        /// Вызывает метод обработки события "мышь входит".
-        /// </summary>
-        private void WidthOfTeethTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            ProcessingMouseEnters(ParameterType.WidthOfTeeth, WidthOfTeethTextBox);
         }
     }
 }
