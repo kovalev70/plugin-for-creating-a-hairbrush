@@ -10,14 +10,14 @@
     public static class Marshal
     {
         /// <summary>
-        /// Получить обработчик программы по её айди.
+        /// Получить обработчик программы по её ID.
         /// </summary>
-        /// <param name="progID">Айди программы.</param>
+        /// <param name="progID">ID программы.</param>
         /// <returns>Обработчик программы.</returns>
+        // TODO: убрать сокращения
         [SecurityCritical]
         public static object GetActiveObject(string progID)
         {
-            object? ppunk = null;
             Guid clsid;
             try
             {
@@ -28,7 +28,7 @@
                 CLSIDFromProgID(progID, out clsid);
             }
 
-            GetActiveObject(ref clsid, IntPtr.Zero, out ppunk);
+            GetActiveObject(ref clsid, IntPtr.Zero, out var ppunk);
             return ppunk;
         }
 

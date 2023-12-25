@@ -33,17 +33,18 @@ namespace HairbrushPlugin
         /// <summary>
         /// Всплывающая подсказка, используемая на форме.
         /// </summary>
+        // TODO: RSDN
         private readonly ToolTip commonToolTip = new ToolTip();
 
         /// <summary>
         /// Параметры для расчёта характеристик расчёски.
         /// </summary>
-        private readonly HairbrushParameters _parameters = new();
+        private readonly HairbrushParameters _parameters = new ();
 
         /// <summary>
         /// Объект для построения расчёски.
         /// </summary>
-        private readonly HairbrushBuilder _hairbrushBuilder = new();
+        private readonly HairbrushBuilder _hairbrushBuilder = new ();
 
         /// <summary>
         /// Конструктор класса MainForm.
@@ -130,15 +131,17 @@ namespace HairbrushPlugin
         /// <returns>True, если ошибок нет. Иначе - false.</returns>
         private bool CheckFormOnErrors()
         {
-            string errorMessage = "";
+            var errorMessage = string.Empty;
             foreach (var error in _errors)
             {
+                // TODO: string.IsStringEmpty(error.Value)
                 if (error.Value != "")
                 {
                     errorMessage = errorMessage + "- " + error.Value + "\n";
                 }
             }
 
+            // TODO: string.IsStringEmpty(error.Value)
             if (errorMessage != "")
             {
                 MessageBox.Show(errorMessage);

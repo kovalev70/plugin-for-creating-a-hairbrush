@@ -3,9 +3,11 @@
     using Model;
     using NUnit.Framework;
 
+    // TODO: XML
     [TestFixture]
     public class ValidatorTests
     {
+        // TODO: описание
         [TestCase(100, -100, 100)]
         [TestCase(-100, -100, 100)]
         [TestCase(0, -100, 100)]

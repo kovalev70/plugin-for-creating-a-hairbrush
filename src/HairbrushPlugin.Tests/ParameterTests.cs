@@ -2,10 +2,12 @@ namespace Tests
 {
     using Model;
     using NUnit.Framework;
-
+    
+    // TODO: XML
     [TestFixture]
     public class ParameterTests
     {
+        // TODO: добавить описание в каждый TestCase
         [TestCase(10, 50, 20)]
         [TestCase(2, 5, 3)]
         [TestCase(10, 40, 20)]

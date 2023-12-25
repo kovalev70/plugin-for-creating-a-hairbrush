@@ -1,4 +1,5 @@
-﻿namespace Model
+﻿// TODO: namespace (во всех классах)
+namespace Model
 {
     /// <summary>
     /// Класс, описывающий параметры расчески.

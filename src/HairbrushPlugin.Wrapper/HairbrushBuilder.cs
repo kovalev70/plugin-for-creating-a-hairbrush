@@ -11,11 +11,13 @@
         /// <summary>
         /// Расстояние между внешней стенкой и зубьями.
         /// </summary>
+        // TODO: RSDN
         private const double OUTERWALL = 10;
 
         /// <summary>
         /// Ширина ручки.
         /// </summary>
+        // TODO: RSDN
         private const double HANDLEWIDTH = OUTERWALL * 2;
 
         /// <summary>
@@ -40,6 +42,7 @@
                 + distanceBetweenTeeth + ((2 * widthOfTeeth) + 2);
             var xPosition = (lengthOfTeeth + OUTERWALL) / 2;
 
+            // TODO: грамошибка
             var hairbrushScetch = _wrapper.CreateSketch();
             var document2d = (ksDocument2D)hairbrushScetch.BeginEdit();
             document2d.ksPolyline(1);
@@ -128,6 +131,7 @@
         /// <param name="distanceBetweenTeeth">Расстояние между зубцами расчески.</param>
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfBase">Длина основания расчески.</param>
+        // TODO: Teeth
         private void BuildTeeths(
             ksDocument2D document2d,
             int numberOfTeeth,

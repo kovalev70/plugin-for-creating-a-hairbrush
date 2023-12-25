@@ -5,6 +5,7 @@
     /// </summary>
     public class Parameter
     {
+        // TODO: XML
         private double _value;
 
         /// <summary>
