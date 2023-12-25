@@ -1,7 +1,7 @@
-﻿namespace Wrapper
+﻿namespace HairbrushPlugin.Wrapper
 {
+    using HairbrushPlugin.Model;
     using Kompas6API5;
-    using Model;
 
     /// <summary>
     /// Класс для построения расчески.
@@ -12,13 +12,13 @@
         /// Расстояние между внешней стенкой и зубьями.
         /// </summary>
         // TODO: RSDN
-        private const double OUTERWALL = 10;
+        private const double OuterWall = 10;
 
         /// <summary>
         /// Ширина ручки.
         /// </summary>
         // TODO: RSDN
-        private const double HANDLEWIDTH = OUTERWALL * 2;
+        private const double handleWidth = OuterWall * 2;
 
         /// <summary>
         /// Объект KompasWrapper.
@@ -40,11 +40,11 @@
             var widthOfTeeth = parameters.Parameters[ParameterType.WidthOfTeeth].Value;
             var lengthOfBase = (numberOfTeeth * (distanceBetweenTeeth + widthOfTeeth))
                 + distanceBetweenTeeth + ((2 * widthOfTeeth) + 2);
-            var xPosition = (lengthOfTeeth + OUTERWALL) / 2;
+            var xPosition = (lengthOfTeeth + OuterWall) / 2;
 
             // TODO: грамошибка
-            var hairbrushScetch = _wrapper.CreateSketch();
-            var document2d = (ksDocument2D)hairbrushScetch.BeginEdit();
+            var hairbrushSketch = _wrapper.CreateSketch();
+            var document2d = (ksDocument2D)hairbrushSketch.BeginEdit();
             document2d.ksPolyline(1);
 
             BuildBody(
@@ -54,7 +54,7 @@
                 widthOfTeeth,
                 lengthOfBase);
 
-            BuildTeeths(
+            BuildTeeth(
                 document2d,
                 numberOfTeeth,
                 lengthOfTeeth,
@@ -71,7 +71,7 @@
                 widthOfTeeth);
 
             document2d.ksEndObj();
-            hairbrushScetch.EndEdit();
+            hairbrushSketch.EndEdit();
 
             _wrapper.MakeExtrusion(5);
         }
@@ -100,23 +100,23 @@
                 lengthOfBase,
                 default);
             document2d.ksPoint(
-                xPosition - lengthOfTeeth - OUTERWALL + 1,
+                xPosition - lengthOfTeeth - OuterWall + 1,
                 lengthOfBase - widthOfTeeth - 1,
                 default);
             document2d.ksPoint(
-                xPosition - lengthOfTeeth - OUTERWALL,
+                xPosition - lengthOfTeeth - OuterWall,
                 lengthOfBase - widthOfTeeth - 1 - (widthOfTeeth / 3),
                 default);
             document2d.ksPoint(
-                xPosition - lengthOfTeeth - OUTERWALL,
+                xPosition - lengthOfTeeth - OuterWall,
                 lengthOfBase - widthOfTeeth - 2 - (2 * (widthOfTeeth / 3)),
                 default);
             document2d.ksPoint(
-                xPosition - lengthOfTeeth - OUTERWALL + 1,
+                xPosition - lengthOfTeeth - OuterWall + 1,
                 lengthOfBase - (2 * widthOfTeeth) - 2,
                 default);
             document2d.ksPoint(
-                xPosition - OUTERWALL,
+                xPosition - OuterWall,
                 lengthOfBase - (2 * widthOfTeeth) - 2,
                 default);
         }
@@ -132,7 +132,7 @@
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfBase">Длина основания расчески.</param>
         // TODO: Teeth
-        private void BuildTeeths(
+        private void BuildTeeth(
             ksDocument2D document2d,
             int numberOfTeeth,
             double lengthOfTeeth,
@@ -144,41 +144,41 @@
             var yOffset = distanceBetweenTeeth;
 
             document2d.ksPoint(
-                xPosition - OUTERWALL,
+                xPosition - OuterWall,
                 lengthOfBase - (2 * widthOfTeeth) - 2,
                 default);
 
             for (int i = 0; i < numberOfTeeth; i++)
             {
                 document2d.ksPoint(
-                    xPosition - OUTERWALL,
+                    xPosition - OuterWall,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset,
                     default);
                 document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth + 1,
+                    xPosition - OuterWall - lengthOfTeeth + 1,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset,
                     default);
                 document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth,
+                    xPosition - OuterWall - lengthOfTeeth,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset - (widthOfTeeth / 3),
                     default);
                 document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth,
+                    xPosition - OuterWall - lengthOfTeeth,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset - (2 * (widthOfTeeth / 3)),
                     default);
                 document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth + 1,
+                    xPosition - OuterWall - lengthOfTeeth + 1,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset - widthOfTeeth,
                     default);
                 document2d.ksPoint(
-                    xPosition - OUTERWALL,
+                    xPosition - OuterWall,
                     lengthOfBase - (2 * widthOfTeeth) - 2 - yOffset - widthOfTeeth,
                     default);
                 yOffset -= -widthOfTeeth - distanceBetweenTeeth;
             }
 
             document2d.ksPoint(
-                    xPosition - OUTERWALL,
+                    xPosition - OuterWall,
                     0,
                     default);
         }
@@ -199,39 +199,39 @@
             double widthOfTeeth)
         {
             document2d.ksPoint(
-                    xPosition - OUTERWALL,
+                    xPosition - OuterWall,
                     0,
                     default);
             document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth + 1,
+                    xPosition - OuterWall - lengthOfTeeth + 1,
                     0,
                     default);
             document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth,
+                    xPosition - OuterWall - lengthOfTeeth,
                     -widthOfTeeth / 3,
                     default);
             document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth,
+                    xPosition - OuterWall - lengthOfTeeth,
                     -2 * (widthOfTeeth / 3),
                     default);
             document2d.ksPoint(
-                    xPosition - OUTERWALL - lengthOfTeeth + 1,
+                    xPosition - OuterWall - lengthOfTeeth + 1,
                     -widthOfTeeth,
                     default);
             document2d.ksPoint(
-                    xPosition - HANDLEWIDTH,
+                    xPosition - handleWidth,
                     -(3 * widthOfTeeth) + 2,
                     default);
             document2d.ksPoint(
-                    xPosition - HANDLEWIDTH,
+                    xPosition - handleWidth,
                     -(3 * widthOfTeeth) - handleLength + 2,
                     default);
             document2d.ksPoint(
-                    xPosition - HANDLEWIDTH - (lengthOfTeeth / 2),
+                    xPosition - handleWidth - (lengthOfTeeth / 2),
                     -(3 * widthOfTeeth) - handleLength - 23,
                     default);
             document2d.ksPoint(
-                    xPosition - HANDLEWIDTH - (lengthOfTeeth / 2),
+                    xPosition - handleWidth - (lengthOfTeeth / 2),
                     -(3 * widthOfTeeth) - handleLength - 28,
                     default);
             document2d.ksPoint(

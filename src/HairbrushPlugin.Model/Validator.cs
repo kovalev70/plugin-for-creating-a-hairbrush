@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace HairbrushPlugin.Model
 {
     /// <summary>
     /// Представляет инструменты для проверки допустимости значений.

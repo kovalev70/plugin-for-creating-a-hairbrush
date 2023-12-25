@@ -1,7 +1,7 @@
-namespace HairbrushPlugin
+namespace HairbrushPlugin.View
 {
-    using Model;
-    using Wrapper;
+    using HairbrushPlugin.Model;
+    using HairbrushPlugin.Wrapper;
 
     /// <summary>
     /// Главное окно.
@@ -34,7 +34,7 @@ namespace HairbrushPlugin
         /// Всплывающая подсказка, используемая на форме.
         /// </summary>
         // TODO: RSDN
-        private readonly ToolTip commonToolTip = new ToolTip();
+        private readonly ToolTip _commonToolTip = new ToolTip();
 
         /// <summary>
         /// Параметры для расчёта характеристик расчёски.
@@ -119,7 +119,7 @@ namespace HairbrushPlugin
                     var parameterType = (ParameterType)result;
                     if (_errors[parameterType] != "")
                     {
-                        commonToolTip.SetToolTip(textBox, _errors[parameterType]);
+                        _commonToolTip.SetToolTip(textBox, _errors[parameterType]);
                     }
                 }
             }
@@ -135,14 +135,14 @@ namespace HairbrushPlugin
             foreach (var error in _errors)
             {
                 // TODO: string.IsStringEmpty(error.Value)
-                if (error.Value != "")
+                if (string.IsNullOrEmpty(error.Value))
                 {
                     errorMessage = errorMessage + "- " + error.Value + "\n";
                 }
             }
 
             // TODO: string.IsStringEmpty(error.Value)
-            if (errorMessage != "")
+            if (string.IsNullOrEmpty(errorMessage))
             {
                 MessageBox.Show(errorMessage);
                 return false;

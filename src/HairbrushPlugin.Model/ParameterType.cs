@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace HairbrushPlugin.Model
 {
     /// <summary>
     /// Представляет тип параметра для использования в приложении.

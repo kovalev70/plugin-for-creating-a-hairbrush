@@ -1,11 +1,13 @@
-﻿namespace Model
+﻿namespace HairbrushPlugin.Model
 {
     /// <summary>
     /// Представляет параметр с определенным диапазоном значений.
     /// </summary>
     public class Parameter
     {
-        // TODO: XML
+       /// <summary>
+       /// Значение параметра.
+       /// </summary>
         private double _value;
 
         /// <summary>

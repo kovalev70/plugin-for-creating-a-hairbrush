@@ -1,4 +1,4 @@
-﻿namespace Wrapper
+﻿namespace HairbrushPlugin.Wrapper
 {
     using System.Runtime.InteropServices;
     using System.Security;
@@ -12,20 +12,20 @@
         /// <summary>
         /// Получить обработчик программы по её ID.
         /// </summary>
-        /// <param name="progID">ID программы.</param>
+        /// <param name="programId">ID программы.</param>
         /// <returns>Обработчик программы.</returns>
         // TODO: убрать сокращения
         [SecurityCritical]
-        public static object GetActiveObject(string progID)
+        public static object GetActiveObject(string programId)
         {
             Guid clsid;
             try
             {
-                CLSIDFromProgIDEx(progID, out clsid);
+                CLSIDFromProgIDEx(programId, out clsid);
             }
             catch (Exception)
             {
-                CLSIDFromProgID(progID, out clsid);
+                CLSIDFromProgID(programId, out clsid);
             }
 
             GetActiveObject(ref clsid, IntPtr.Zero, out var ppunk);
@@ -36,14 +36,14 @@
         [SuppressUnmanagedCodeSecurity]
         [SecurityCritical]
         private static extern void CLSIDFromProgIDEx(
-            [MarshalAs(UnmanagedType.LPWStr)] string progId,
+            [MarshalAs(UnmanagedType.LPWStr)] string programId,
             out Guid clsid);
 
         [DllImport("ole32.dll", PreserveSig = false)]
         [SuppressUnmanagedCodeSecurity]
         [SecurityCritical]
         private static extern void CLSIDFromProgID(
-            [MarshalAs(UnmanagedType.LPWStr)] string progId,
+            [MarshalAs(UnmanagedType.LPWStr)] string programId,
             out Guid clsid);
 
         [DllImport("oleaut32.dll", PreserveSig = false)]

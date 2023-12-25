@@ -1,4 +1,4 @@
-﻿namespace HairbrushPlugin
+﻿namespace HairbrushPlugin.View
 {
     partial class MainForm
     {

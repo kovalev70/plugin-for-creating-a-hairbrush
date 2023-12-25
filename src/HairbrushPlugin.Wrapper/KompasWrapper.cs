@@ -1,4 +1,4 @@
-﻿namespace Wrapper
+﻿namespace HairbrushPlugin.Wrapper
 {
     using System;
     using Kompas6API5;
@@ -12,7 +12,7 @@
         /// <summary>
         /// ID Компаса 3D в COM реестре.
         /// </summary>
-        private const string KOMPASID = "KOMPAS.Application.5";
+        private const string KompasId = "KOMPAS.Application.5";
 
         /// <summary>
         /// Объект Компас 3D.
@@ -47,11 +47,11 @@
         {
             try
             {
-                _kompasObject = Marshal.GetActiveObject(KOMPASID) as KompasObject;
+                _kompasObject = Marshal.GetActiveObject(KompasId) as KompasObject;
             }
             catch
             {
-                var compassType = Type.GetTypeFromProgID(KOMPASID);
+                var compassType = Type.GetTypeFromProgID(KompasId);
                 if (compassType != null)
                 {
                     _kompasObject = Activator.CreateInstance(compassType) as KompasObject;

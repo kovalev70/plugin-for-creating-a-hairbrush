@@ -1,4 +1,4 @@
-namespace HairbrushPlugin
+namespace HairbrushPlugin.View
 {
     /// <summary>
     ///  ¬нутренний статический класс, представл€ющий программу.

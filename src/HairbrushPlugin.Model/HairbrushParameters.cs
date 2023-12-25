@@ -1,5 +1,4 @@
-﻿// TODO: namespace (во всех классах)
-namespace Model
+﻿namespace HairbrushPlugin.Model
 {
     /// <summary>
     /// Класс, описывающий параметры расчески.
