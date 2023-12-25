@@ -4,12 +4,12 @@ namespace HairbrushPlugin
     using Wrapper;
 
     /// <summary>
-    /// Главное окно.
+    /// Р“Р»Р°РІРЅРѕРµ РѕРєРЅРѕ.
     /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Словарь для отображения ошибок.
+        /// РЎР»РѕРІР°СЂСЊ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РѕС€РёР±РѕРє.
         /// </summary>
         private readonly Dictionary<ParameterType, string> _errors = new Dictionary<ParameterType, string>()
         {
@@ -21,33 +21,33 @@ namespace HairbrushPlugin
         };
 
         /// <summary>
-        /// Цвет для неверного ввода.
+        /// Р¦РІРµС‚ РґР»СЏ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°.
         /// </summary>
         private readonly Color _incorrectBackColor = Color.LightPink;
 
         /// <summary>
-        /// Цвет для верного ввода.
+        /// Р¦РІРµС‚ РґР»СЏ РІРµСЂРЅРѕРіРѕ РІРІРѕРґР°.
         /// </summary>
         private readonly Color _correctBackColor = Color.White;
 
         /// <summary>
-        /// Всплывающая подсказка, используемая на форме.
+        /// Р’СЃРїР»С‹РІР°СЋС‰Р°СЏ РїРѕРґСЃРєР°Р·РєР°, РёСЃРїРѕР»СЊР·СѓРµРјР°СЏ РЅР° С„РѕСЂРјРµ.
         /// </summary>
         private readonly ToolTip commonToolTip = new ToolTip();
 
         /// <summary>
-        /// Параметры для расчёта характеристик расчёски.
+        /// РџР°СЂР°РјРµС‚СЂС‹ РґР»СЏ СЂР°СЃС‡С‘С‚Р° С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРє СЂР°СЃС‡С‘СЃРєРё.
         /// </summary>
         private readonly HairbrushParameters _parameters = new();
 
         /// <summary>
-        /// Объект для построения расчёски.
+        /// РћР±СЉРµРєС‚ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ СЂР°СЃС‡С‘СЃРєРё.
         /// </summary>
         private readonly HairbrushBuilder _hairbrushBuilder = new();
 
         /// <summary>
-        /// Конструктор класса MainForm.
-        /// Инициализирует компоненты формы.
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° MainForm.
+        /// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РєРѕРјРїРѕРЅРµРЅС‚С‹ С„РѕСЂРјС‹.
         /// </summary>
         public MainForm()
         {
@@ -56,7 +56,7 @@ namespace HairbrushPlugin
         }
 
         /// <summary>
-        /// Заполнение текстбоксов параметрами по умолчанию.
+        /// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚РµРєСЃС‚Р±РѕРєСЃРѕРІ РїР°СЂР°РјРµС‚СЂР°РјРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
         /// </summary>
         private void TextBoxesFilling()
         {
@@ -73,7 +73,7 @@ namespace HairbrushPlugin
         }
 
         /// <summary>
-        /// Обработка изменений текста.
+        /// РћР±СЂР°Р±РѕС‚РєР° РёР·РјРµРЅРµРЅРёР№ С‚РµРєСЃС‚Р°.
         /// </summary>
         private void ProcessingTextChanges(object sender, EventArgs e)
         {
@@ -98,14 +98,14 @@ namespace HairbrushPlugin
                     catch
                     {
                         textBox.BackColor = _incorrectBackColor;
-                        _errors[parameterType] = "Некорректный формат данных.";
+                        _errors[parameterType] = "РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С….";
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Обработка события наведения мыши.
+        /// РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РЅР°РІРµРґРµРЅРёСЏ РјС‹С€Рё.
         /// </summary>
         private void ProcessingMouseEnters(object sender, EventArgs e)
         {
@@ -125,9 +125,9 @@ namespace HairbrushPlugin
         }
 
         /// <summary>
-        /// Проверка формы на наличие ошибок.
+        /// РџСЂРѕРІРµСЂРєР° С„РѕСЂРјС‹ РЅР° РЅР°Р»РёС‡РёРµ РѕС€РёР±РѕРє.
         /// </summary>
-        /// <returns>True, если ошибок нет. Иначе - false.</returns>
+        /// <returns>True, РµСЃР»Рё РѕС€РёР±РѕРє РЅРµС‚. РРЅР°С‡Рµ - false.</returns>
         private bool CheckFormOnErrors()
         {
             string errorMessage = "";
@@ -149,8 +149,8 @@ namespace HairbrushPlugin
         }
 
         /// <summary>
-        /// Обработчик нажатия кнопки "Build".
-        /// Проверяет форму на наличие ошибок и, в случае их отсутствия, строит расчёску.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё "Build".
+        /// РџСЂРѕРІРµСЂСЏРµС‚ С„РѕСЂРјСѓ РЅР° РЅР°Р»РёС‡РёРµ РѕС€РёР±РѕРє Рё, РІ СЃР»СѓС‡Р°Рµ РёС… РѕС‚СЃСѓС‚СЃС‚РІРёСЏ, СЃС‚СЂРѕРёС‚ СЂР°СЃС‡С‘СЃРєСѓ.
         /// </summary>
         private void BuildButton_Click(object sender, EventArgs e)
         {
