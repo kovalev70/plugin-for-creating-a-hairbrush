@@ -15,12 +15,6 @@
         private const double OuterWall = 10;
 
         /// <summary>
-        /// Ширина ручки.
-        /// </summary>
-        // TODO: RSDN
-        private const double handleWidth = OuterWall * 2;
-
-        /// <summary>
         /// Объект KompasWrapper.
         /// </summary>
         private readonly KompasWrapper _wrapper = new ();
@@ -38,6 +32,7 @@
             var lengthOfTeeth = parameters.Parameters[ParameterType.LengthOfTeeth].Value;
             var distanceBetweenTeeth = parameters.Parameters[ParameterType.DistanceBetweenTeeth].Value;
             var widthOfTeeth = parameters.Parameters[ParameterType.WidthOfTeeth].Value;
+            var handleWidth = parameters.Parameters[ParameterType.HandleWidth].Value;
             var lengthOfBase = (numberOfTeeth * (distanceBetweenTeeth + widthOfTeeth))
                 + distanceBetweenTeeth + ((2 * widthOfTeeth) + 2);
             var xPosition = (lengthOfTeeth + OuterWall) / 2;
@@ -68,7 +63,8 @@
                 handleLength,
                 xPosition,
                 lengthOfTeeth,
-                widthOfTeeth);
+                widthOfTeeth,
+                handleWidth);
 
             document2d.ksEndObj();
             hairbrushSketch.EndEdit();
@@ -196,7 +192,8 @@
             double handleLength,
             double xPosition,
             double lengthOfTeeth,
-            double widthOfTeeth)
+            double widthOfTeeth,
+            double handleWidth)
         {
             document2d.ksPoint(
                     xPosition - OuterWall,

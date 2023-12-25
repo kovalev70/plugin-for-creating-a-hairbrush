@@ -39,12 +39,12 @@ namespace HairbrushPlugin.View
         /// <summary>
         /// Параметры для расчёта характеристик расчёски.
         /// </summary>
-        private readonly HairbrushParameters _parameters = new ();
+        private readonly HairbrushParameters _parameters = new();
 
         /// <summary>
         /// Объект для построения расчёски.
         /// </summary>
-        private readonly HairbrushBuilder _hairbrushBuilder = new ();
+        private readonly HairbrushBuilder _hairbrushBuilder = new();
 
         /// <summary>
         /// Конструктор класса MainForm.
@@ -62,6 +62,8 @@ namespace HairbrushPlugin.View
         private void TextBoxesFilling()
         {
             HandleLengthTextBox.Text = _parameters.Parameters[ParameterType.HandleLength]
+                .Value.ToString();
+            HandleWidthTextBox.Text = _parameters.Parameters[ParameterType.HandleWidth]
                 .Value.ToString();
             NumberOfTeethTextBox.Text = _parameters.Parameters[ParameterType.NumberOfTeeth]
                 .Value.ToString();

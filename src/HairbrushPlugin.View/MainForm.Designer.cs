@@ -30,6 +30,9 @@
         {
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             LeftPanel = new Panel();
+            label6 = new Label();
+            label7 = new Label();
+            HandleWidthTextBox = new TextBox();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -74,6 +77,9 @@
             // LeftPanel
             // 
             LeftPanel.BackColor = SystemColors.Window;
+            LeftPanel.Controls.Add(label6);
+            LeftPanel.Controls.Add(label7);
+            LeftPanel.Controls.Add(HandleWidthTextBox);
             LeftPanel.Controls.Add(label5);
             LeftPanel.Controls.Add(label4);
             LeftPanel.Controls.Add(label3);
@@ -97,10 +103,40 @@
             LeftPanel.Size = new Size(327, 576);
             LeftPanel.TabIndex = 0;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(189, 98);
+            label6.Name = "label6";
+            label6.Size = new Size(63, 15);
+            label6.TabIndex = 30;
+            label6.Text = "10 - 30 мм";
+            label6.TextChanged += ProcessingTextChanges;
+            label6.MouseEnter += ProcessingMouseEnters;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(9, 77);
+            label7.Name = "label7";
+            label7.Size = new Size(98, 15);
+            label7.TabIndex = 28;
+            label7.Text = "Ширина ручки h";
+            // 
+            // HandleWidthTextBox
+            // 
+            HandleWidthTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            HandleWidthTextBox.Location = new Point(9, 95);
+            HandleWidthTextBox.Name = "HandleWidthTextBox";
+            HandleWidthTextBox.Size = new Size(174, 23);
+            HandleWidthTextBox.TabIndex = 29;
+            HandleWidthTextBox.TextChanged += ProcessingTextChanges;
+            HandleWidthTextBox.MouseEnter += ProcessingMouseEnters;
+            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(189, 260);
+            label5.Location = new Point(189, 316);
             label5.Name = "label5";
             label5.Size = new Size(51, 15);
             label5.TabIndex = 27;
@@ -109,7 +145,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(189, 206);
+            label4.Location = new Point(189, 262);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 26;
@@ -118,7 +154,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(189, 152);
+            label3.Location = new Point(189, 208);
             label3.Name = "label3";
             label3.Size = new Size(63, 15);
             label3.TabIndex = 25;
@@ -127,7 +163,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(189, 98);
+            label2.Location = new Point(189, 154);
             label2.Name = "label2";
             label2.Size = new Size(42, 15);
             label2.TabIndex = 24;
@@ -154,7 +190,7 @@
             // 
             // WidthOfTeethTextBox
             // 
-            WidthOfTeethTextBox.Location = new Point(9, 257);
+            WidthOfTeethTextBox.Location = new Point(9, 313);
             WidthOfTeethTextBox.Name = "WidthOfTeethTextBox";
             WidthOfTeethTextBox.Size = new Size(175, 23);
             WidthOfTeethTextBox.TabIndex = 21;
@@ -213,7 +249,7 @@
             // 
             // DistanceBetweenTeethTextBox
             // 
-            DistanceBetweenTeethTextBox.Location = new Point(9, 203);
+            DistanceBetweenTeethTextBox.Location = new Point(9, 259);
             DistanceBetweenTeethTextBox.Name = "DistanceBetweenTeethTextBox";
             DistanceBetweenTeethTextBox.Size = new Size(175, 23);
             DistanceBetweenTeethTextBox.TabIndex = 20;
@@ -222,7 +258,7 @@
             // 
             // LengthOfTeethTextBox
             // 
-            LengthOfTeethTextBox.Location = new Point(9, 149);
+            LengthOfTeethTextBox.Location = new Point(9, 205);
             LengthOfTeethTextBox.Name = "LengthOfTeethTextBox";
             LengthOfTeethTextBox.Size = new Size(175, 23);
             LengthOfTeethTextBox.TabIndex = 19;
@@ -242,7 +278,7 @@
             // 
             NumberOfTeethTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NumberOfTeethTextBox.BackColor = SystemColors.Window;
-            NumberOfTeethTextBox.Location = new Point(9, 95);
+            NumberOfTeethTextBox.Location = new Point(9, 151);
             NumberOfTeethTextBox.Name = "NumberOfTeethTextBox";
             NumberOfTeethTextBox.Size = new Size(174, 23);
             NumberOfTeethTextBox.TabIndex = 18;
@@ -252,7 +288,7 @@
             // EmailLabel
             // 
             EmailLabel.AutoSize = true;
-            EmailLabel.Location = new Point(9, 75);
+            EmailLabel.Location = new Point(9, 131);
             EmailLabel.Margin = new Padding(3, 10, 3, 0);
             EmailLabel.Name = "EmailLabel";
             EmailLabel.Size = new Size(93, 15);
@@ -272,7 +308,7 @@
             // PhoneNumberLabel
             // 
             PhoneNumberLabel.AutoSize = true;
-            PhoneNumberLabel.Location = new Point(9, 131);
+            PhoneNumberLabel.Location = new Point(9, 187);
             PhoneNumberLabel.Margin = new Padding(3, 10, 3, 0);
             PhoneNumberLabel.Name = "PhoneNumberLabel";
             PhoneNumberLabel.Size = new Size(93, 15);
@@ -282,7 +318,7 @@
             // VKLable
             // 
             VKLable.AutoSize = true;
-            VKLable.Location = new Point(9, 239);
+            VKLable.Location = new Point(9, 295);
             VKLable.Margin = new Padding(3, 10, 3, 0);
             VKLable.Name = "VKLable";
             VKLable.Size = new Size(103, 15);
@@ -292,7 +328,7 @@
             // DateOfBirthLabel
             // 
             DateOfBirthLabel.AutoSize = true;
-            DateOfBirthLabel.Location = new Point(9, 185);
+            DateOfBirthLabel.Location = new Point(9, 241);
             DateOfBirthLabel.Margin = new Padding(3, 10, 3, 0);
             DateOfBirthLabel.Name = "DateOfBirthLabel";
             DateOfBirthLabel.Size = new Size(170, 15);
@@ -327,7 +363,7 @@
             // HairbrushPictureBox
             // 
             HairbrushPictureBox.Dock = DockStyle.Fill;
-            HairbrushPictureBox.Image = View.Properties.Resources.Hairbrush;
+            HairbrushPictureBox.Image = Properties.Resources.Hairbrush;
             HairbrushPictureBox.InitialImage = (Image)resources.GetObject("HairbrushPictureBox.InitialImage");
             HairbrushPictureBox.Location = new Point(0, 0);
             HairbrushPictureBox.Name = "HairbrushPictureBox";
@@ -449,5 +485,8 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Label label6;
+        private Label label7;
+        private TextBox HandleWidthTextBox;
     }
 }

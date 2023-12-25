@@ -28,6 +28,11 @@
         /// <summary>
         /// Ширина зубьев.
         /// </summary>
-        WidthOfTeeth
+        WidthOfTeeth,
+
+        /// <summary>
+        /// Ширина ручки.
+        /// </summary>
+        HandleWidth
     }
 }
