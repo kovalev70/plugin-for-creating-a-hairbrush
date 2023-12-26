@@ -34,7 +34,6 @@ namespace HairbrushPlugin.View
         /// <summary>
         /// Всплывающая подсказка, используемая на форме.
         /// </summary>
-        // TODO: RSDN
         private readonly ToolTip _commonToolTip = new ToolTip();
 
         /// <summary>
@@ -137,14 +136,12 @@ namespace HairbrushPlugin.View
             var errorMessage = string.Empty;
             foreach (var error in _errors)
             {
-                // TODO: string.IsStringEmpty(error.Value)
                 if (!string.IsNullOrEmpty(error.Value))
                 {
                     errorMessage = errorMessage + "- " + error.Value + "\n";
                 }
             }
 
-            // TODO: string.IsStringEmpty(error.Value)
             if (!string.IsNullOrEmpty(errorMessage))
             {
                 MessageBox.Show(errorMessage);

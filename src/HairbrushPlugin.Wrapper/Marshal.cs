@@ -14,7 +14,6 @@
         /// </summary>
         /// <param name="programId">ID программы.</param>
         /// <returns>Обработчик программы.</returns>
-        // TODO: убрать сокращения
         [SecurityCritical]
         public static object GetActiveObject(string programId)
         {

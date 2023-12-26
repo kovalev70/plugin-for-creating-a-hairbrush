@@ -11,7 +11,6 @@
         /// <summary>
         /// Расстояние между внешней стенкой и зубьями.
         /// </summary>
-        // TODO: RSDN
         private const double OuterWall = 10;
 
         /// <summary>
@@ -37,7 +36,6 @@
                 + distanceBetweenTeeth + ((2 * widthOfTeeth) + 2);
             var xPosition = (lengthOfTeeth + OuterWall) / 2;
 
-            // TODO: грамошибка
             var hairbrushSketch = _wrapper.CreateSketch();
             var document2d = (ksDocument2D)hairbrushSketch.BeginEdit();
             document2d.ksPolyline(1);
@@ -127,7 +125,6 @@
         /// <param name="distanceBetweenTeeth">Расстояние между зубцами расчески.</param>
         /// <param name="xPosition">X координата, относительно которой мы строим расческу.</param>
         /// <param name="lengthOfBase">Длина основания расчески.</param>
-        // TODO: Teeth
         private void BuildTeeth(
             ksDocument2D document2d,
             int numberOfTeeth,

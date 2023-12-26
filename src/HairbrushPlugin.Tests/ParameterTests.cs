@@ -9,7 +9,6 @@ namespace HairbrushPlugin.Tests
     [TestFixture]
     public class ParameterTests
     {
-        // TODO: добавить описание в каждый TestCase
         [TestCase(10, 50, 20,
             Description = "Тестирование инициализации параметра с допустимыми значениями")]
         [TestCase(2, 5, 3,

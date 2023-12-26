@@ -3,14 +3,12 @@
     using HairbrushPlugin.Model;
     using NUnit.Framework;
 
-    // TODO: XML
     /// <summary>
     /// Юнит тесты для класса Validator.
     /// </summary>
     [TestFixture]
     public class ValidatorTests
     {
-        // TODO: описание
         [TestCase(100, -100, 100, 
             Description = "Проверка вхождения максимального числа в заданный диапазон")]
         [TestCase(-100, -100, 100, 
