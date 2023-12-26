@@ -14,6 +14,7 @@ namespace HairbrushPlugin.View
         private readonly Dictionary<ParameterType, string> _errors = new Dictionary<ParameterType, string>()
         {
             { ParameterType.HandleLength, "" },
+            { ParameterType.HandleWidth, "" },
             { ParameterType.NumberOfTeeth, "" },
             { ParameterType.LengthOfTeeth, "" },
             { ParameterType.DistanceBetweenTeeth, "" },
@@ -39,12 +40,12 @@ namespace HairbrushPlugin.View
         /// <summary>
         /// Параметры для расчёта характеристик расчёски.
         /// </summary>
-        private readonly HairbrushParameters _parameters = new();
+        private readonly HairbrushParameters _parameters = new ();
 
         /// <summary>
         /// Объект для построения расчёски.
         /// </summary>
-        private readonly HairbrushBuilder _hairbrushBuilder = new();
+        private readonly HairbrushBuilder _hairbrushBuilder = new ();
 
         /// <summary>
         /// Конструктор класса MainForm.
@@ -137,14 +138,14 @@ namespace HairbrushPlugin.View
             foreach (var error in _errors)
             {
                 // TODO: string.IsStringEmpty(error.Value)
-                if (string.IsNullOrEmpty(error.Value))
+                if (!string.IsNullOrEmpty(error.Value))
                 {
                     errorMessage = errorMessage + "- " + error.Value + "\n";
                 }
             }
 
             // TODO: string.IsStringEmpty(error.Value)
-            if (string.IsNullOrEmpty(errorMessage))
+            if (!string.IsNullOrEmpty(errorMessage))
             {
                 MessageBox.Show(errorMessage);
                 return false;
